@@ -15,46 +15,15 @@ services:
     tty: true
     stdin_open: true
 
-  tinyproxy-1:
+  tinyproxy:
     image: monokal/tinyproxy
-    container_name: tinyproxy-1
-    ports:
-      - "6666:8888"
-    command: ANY
-    networks:
-      bridge_net:
-        ipv4_address: 172.25.0.3
-
-  tinyproxy-2:
-    image: monokal/tinyproxy
-    container_name: tinyproxy-2
-    ports:
-      - "7777:8888"
-    command: ANY
-    networks:
-      bridge_net:
-        ipv4_address: 172.25.0.4
-
-  tinyproxy-3:
-    image: monokal/tinyproxy
-    container_name: tinyproxy-3
+    container_name: tinyproxy
     ports:
       - "8888:8888"
     command: ANY
     networks:
       bridge_net:
-        ipv4_address: 172.25.0.5
-
-  ping-pong-api:
-    build:
-      context: .
-      dockerfile: Dockerfile
-    container_name: ping-pong-api
-    ports:
-      - "5000:5000"
-    networks:
-      bridge_net:
-        ipv4_address: 172.25.0.6
+        ipv4_address: 172.25.0.3
 
 networks:
   bridge_net:
